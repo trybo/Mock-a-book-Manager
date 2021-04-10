@@ -1,7 +1,7 @@
 <template>
-  <router-link to="/addbooks"><button>Add book</button></router-link>
+  <router-link to="/addbook"><button>Add book</button></router-link>
   <router-link to="/readbooks"><button>Read books</button></router-link>
-  <router-link to="/randonbook"><button>Random book</button></router-link>
+  <router-link to="/randombook"><button>Random book</button></router-link>
 </template>
 
 <style scoped>
