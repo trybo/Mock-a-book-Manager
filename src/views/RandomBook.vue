@@ -1,3 +1,4 @@
 <template>
-    <p>Tutaj będzie losowanie i wyświetlenie randomowej książki</p>
+  <TheHeader />
+  <p>Tutaj będzie losowanie i wyświetlenie randomowej książki</p>
 </template>
