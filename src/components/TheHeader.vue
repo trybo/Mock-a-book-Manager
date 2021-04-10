@@ -48,7 +48,7 @@ h1 {
 }
 
 h1 a {
-  color: white;
+  color: rgb(0, 0, 0);
   margin: 0;
 }
 
