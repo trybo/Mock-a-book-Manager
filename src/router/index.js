@@ -1,11 +1,29 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import AddBook from '../views/AddBook.vue'
+import ReadBooks from '../views/ReadBooks.vue'
+import RandomBook from '../views/RandomBook.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/addbook',
+    name: 'AddBook',
+    component: AddBook
+  },
+  {
+    path: '/readbooks',
+    name: 'ReadBooks',
+    component: ReadBooks
+  },
+  {
+    path: '/randombook',
+    name: 'RandomBook',
+    component: RandomBook
   },
   // {
   //   path: '/about',
