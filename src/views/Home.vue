@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <router-link to="/"><h1>BooksManager</h1></router-link>
-    <h3>Discover books bla, bla, bla...</h3>
+    <router-link to="/"><h1>Mock-a-book (Manager)</h1></router-link>
+    <h3>Welcome to the world of random books</h3>
     <HomeNavbar />
   </div>
 </template>

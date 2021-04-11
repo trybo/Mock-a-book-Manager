@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import AddBook from '../views/AddBook.vue'
 import ReadBooks from '../views/ReadBooks.vue'
 import RandomBook from '../views/RandomBook.vue'
+import Book from "../components/Book.vue"
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     name: 'RandomBook',
     component: RandomBook
   },
+  {
+    path: '/Book',
+    name: 'Book',
+    component: Book
+  }
   // {
   //   path: '/about',
   //   name: 'About',
