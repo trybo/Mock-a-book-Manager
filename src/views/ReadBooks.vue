@@ -1,27 +1,56 @@
 <template>
-  <TheHeader />
-  <div class="table">
-    <div
-      class="book"
-      v-on:click="getData(result)"
-      v-for="result in results"
-      :key="result.id"
-    >
+  <div>
+    <TheHeader />
+    <div class="table">
+      <div class="book" v-for="result in results" v-bind:key="result">
+        <br />
+        <br />
 
-    <!-- do napisania: ostylować tak, aby Był plakat, a pod nim tytuł. I poszczególne "kafelki" pokazywały się obok siebie powiedzmy, że ok 4-5 na rząd :)  -->
-      <div class="book_poster">
-        <img v-bind:src="result.poster" />
-      </div>
-
-      <div class="book_details">
-        <p>Title: {{ result.book.title }}</p>
+        <div>
+          <p>Book</p>
+          {{ result.book }}
+        </div>
+        <br />
+        <div>
+          <p>Author</p>
+          {{ result.author }}
+        </div>
+        <br />
+        <div>
+          <p>Rate</p>
+          {{ result.rate }}
+        </div>
+        <div class="book_poster">
+          <img v-bind:src="result.poster" />
+        </div>
+        <div class="book_details">
+          <p>Title: {{ result.book.title }}</p>
+          <!-- w sumie to tyle póki co niech tu bedzie, reszta będzie istotna po kliknieciu w plakat zeby tam sie dało przekazać. -->
+        </div>
       </div>
     </div>
+
+    <!-- 
+      rozwiązanie tabelaryczne, które nie łapie jeszcze zagnieżdżonych, może siedzieć awaryjnie póki co
+      
+      <table>
+      <thead>
+        <tr>
+          <th v-for="key in results_keys" :key="key">{{ key }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="result in results" :key="result.id">
+          <td v-for="key in results_keys" :key="key">{{ result[key] }}</td>
+        </tr>
+      </tbody>
+    </table> -->
   </div>
 </template>
 
 <script>
 import TheHeader from "../components/TheHeader";
+import axios from "axios";
 
 export default {
   data() {
@@ -30,7 +59,6 @@ export default {
       api_key: "881c9e40",
       results: [],
       results_keys: [],
-      clicked_result: [],
     };
   },
   components: {
@@ -38,6 +66,17 @@ export default {
   },
   methods: {
     getApi() {
+      axios
+        .get(`${this.api}/books_project.json?key=${this.api_key}`)
+        .then((result) => {
+          this.results = result.data;
+          this.results_keys = Object.keys(this.results[0]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    /*getApi() {
       fetch(`${this.api}/books_project.json?key=${this.api_key}`)
         .then((res) => res.json())
         .then((result) => {
@@ -45,37 +84,17 @@ export default {
           this.results_keys = Object.keys(this.results["0"]);
         })
         .then(console.log(this.results));
-    },
-    getData(item) {
-      // łapie dane konkretnego plakatu i przekazuje na podstronę.
-      this.clicked_result = item;
-      this.bookPage(this.clicked_result);
-    },
-    bookPage(book_data) {
-      // metoda przekierowująca na unikalną podstronę książki
-      console.log(book_data.book.title);
-      this.$router.push({
-        name: "Book", //book component
-        params: {
-          title: book_data.book.title,
-          author_name: book_data.author.name,
-          author_surname: book_data.author.surname,
-          book_genre: book_data.book.genre,
-          book_pages: book_data.book.pages,
-          release_year: book_data.book.release_year,
-          book_poster: book_data.poster,
-          isbn: book_data.isbn,
-          book_rate: book_data.rate.average,
-          book_votes: book_data.rate.votes
-        },
-      });
-    },
+    }, */
   },
   mounted() {
     this.getApi();
   },
 };
 </script>
+
+
+
+
 <style scoped>
 .table {
   padding: 20px;
