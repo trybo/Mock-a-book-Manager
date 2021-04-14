@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <button type="button" class="btn btn-primary">Primary</button>
     <router-link to="/"><h1>Mock-a-book (Manager)</h1></router-link>
     <h3>Welcome to the world of random books</h3>
     <HomeNavbar />
