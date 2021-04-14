@@ -1,8 +1,8 @@
 <template>
   <div class="container text-center">
-    <p class="h3 text-uppercase font-weight-bold pt-5">Welcome to</p>
-    <router-link to="/"><p class="h1">Mock-a-book (Manager)</p></router-link>
-    <p class="h4">Discover the world of random books</p>
+    <h3 class="text-uppercase font-weight-bold pt-5">Welcome to</h3>
+    <router-link to="/"><h1 >Mock-a-book (Manager)</h1></router-link>
+    <h4 class="font-weight-light">Discover the world of random books</h4>
     <HomeNavbar />
   </div>
 </template>
@@ -18,5 +18,15 @@ export default {
 </script>
 
 <style scoped>
-
+.container a{
+  text-decoration: none;
+}
+h1{
+  color: #802BB1;
+}
+h1:hover,
+h1:active,
+h1.router-link-active {
+  color: #702BB1;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <TheHeader />
   <div class="container">
-    <p class="h3 text-center pt-3">SHUFFLE and find you book!</p>
+    <p class="h3 text-center pt-3"><span class="font-weight-bold">SHUFFLE</span> and find your book!</p>
     <div v-if="isShuffled">
       <div class="card mx-auto" style="width: 38rem" @click="getData(results)">
         <img class="card-img-tom" :src="results.poster" />
