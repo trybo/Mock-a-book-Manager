@@ -1,23 +1,20 @@
 <template>
-  <router-link to="/addbook"><button>Add book</button></router-link>
-  <router-link to="/readbooks"><button>Read books</button></router-link>
-  <router-link to="/randombook"><button>Random book</button></router-link>
+<div class="container">
+  <div class="col text-center my-3"><router-link to="/addbook"><button class="btn btn-purple btn-lg" type="button">Add book</button></router-link></div>
+  <div class="col text-center my-3"><router-link to="/readbooks"><button class="btn btn-purple btn-lg" type="button">Read books</button></router-link></div>
+  <div class="col text-center my-3"><router-link to="/randombook"><button class="btn btn-purple btn-lg" type="button">Random book</button></router-link></div>
+</div>
 </template>
 
 <style scoped>
-button {
-  padding: 0.75rem 15rem;
-  margin: 10px;
-  font-family: inherit;
-  background-color: #ffb69f;
-  border: 1px solid #ffa69f;
-  color: white;
-  cursor: pointer;
+.btn {
+  background: #802BB1;
+  color: #D1D7E0;;
+  width: 250px;
 }
 
-button:hover,
-button:active {
-  background-color: #270041;
-  border-color: #270041;
+.btn:hover {
+  background: #702BB1;
+  color: #E1D7E0;;
 }
 </style>

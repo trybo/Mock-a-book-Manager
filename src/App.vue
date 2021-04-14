@@ -7,15 +7,16 @@
 </template>
 
 <style>
-* {
+/* * {#D1D7E0
   padding: 0px;
   margin: 0px;
-}
+} */
 
 #app {
   height: 100vh;
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  background-color: #2D283E;
+  color: #D1D7E0;
 }
 
 /* #app {
