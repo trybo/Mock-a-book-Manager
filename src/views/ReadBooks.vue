@@ -1,38 +1,71 @@
 <template>
   <TheHeader />
-  <div class="table">
-    <div
-      class="book"
-      v-on:click="getData(result)"
-      v-for="result in results"
-      :key="result.id"
-    >
-      <div class="book_poster">
-        <img v-bind:src="result.poster" />
+  <div class="container">
+    <div class="input-group input-group-lg my-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-lg"
+          >Search book</span
+        >
       </div>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Large"
+        aria-describedby="inputGroup-sizing-sm"
+        placeholder="Start entering title of book"
+        v-model="searchValue"
+      />
+    </div>
 
-      <div class="book_details">
-        <p>{{ result.book.title }}</p>
+    <div class="card-deck">
+      <div
+        class="card text-center my-3"
+        @click="getData(result)"
+        v-for="result in filteredResults"
+        :key="result.id"
+      >
+        <img class="card-img-top" :src="result.poster" />
+        <div class="card-body">
+          <h5 class="card-title">{{ result.book.title }}</h5>
+          <p class="card-text">
+            {{ result.author.name + " " + result.author.surname }}
+          </p>
+        </div>
+        <div class="card-footer">
+          <small>{{ result.book.genre }}</small>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import TheHeader from "../components/TheHeader";
-
 export default {
   data() {
     return {
-      api: "https://my.api.mockaroo.com",
-      api_key: "881c9e40",
-      results: [],
-      results_keys: [],
-      clicked_result: [],
+      // api: "https://my.api.mockaroo.com",
+      // api_key: "881c9e40",
+      // results: [],
+      // results_keys: [],
+      // clicked_result: [],
+      // searchValue: "",
     };
   },
-  components: {
-    TheHeader,
+  computed: {
+    filteredResults() {
+      let tempResults = this.results;
+
+      // Process search input
+      if (this.searchValue != "" && this.searchValue) {
+        tempResults = tempResults.filter((item) => {
+          return item.book.title 
+            .toUpperCase()
+            .includes(this.searchValue.toUpperCase());
+        });
+      }
+     
+      return tempResults;
+    },
   },
   methods: {
     getApi() {
@@ -75,40 +108,28 @@ export default {
   },
 };
 </script>
+
 <style scoped>
-.table {
-  padding: 20px;
-  width: 80%;
-  margin: auto;
+.card-deck {
+  margin-top: 10px;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 0.5rem;
 }
 
-.book {
-  padding: 5px;
-  width: 20%;
-  height: 340px;
-  display: inline-block;
-  /* position: relative;
-  margin: 1%; */
+.card-img-top {
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
 }
 
-.book_poster {
-  width: 25%;
-  height: 340px;
-  float: left;
-  /* position: relative; */
+.card {
+  background: #564f6f;
+  border: 1px solid #d1d7e0;
 }
 
-.book_details {
-  /* border: 1px solid black; */
-  height: auto;
-  background-color: green;
-  position: absolute;
-  width: 200px;
-  margin-top: auto;
-}
-
-.book_details > p {
-  margin: 5px;
-  text-align: center;
+.card-footer {
+  background: #4c495d;
 }
 </style>

@@ -18,6 +18,7 @@ export default {
 </script>
 
 <style scoped>
+
 .container a{
   text-decoration: none;
 }
