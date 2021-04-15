@@ -1,6 +1,23 @@
 <template>
   <TheHeader />
-  <div class="table">
+<div class="container">
+  <div class="card-deck">
+  <div class="card text-center my-3" @click="getData(result)"
+      v-for="result in results"
+      :key="result.id">
+    <img class="card-img-top" :src="result.poster">
+    <div class="card-body">
+      <h5 class="card-title">{{ result.book.title }}</h5>
+      <p class="card-text">{{ result.author.name + " " + result.author.surname }}</p>
+    </div>
+    <div class="card-footer">
+      <small>{{ result.book.genre }}</small>
+    </div>
+  </div>
+</div>
+</div>
+
+  <!-- <div class="table">
     <div
       class="book"
       v-on:click="getData(result)"
@@ -15,7 +32,7 @@
         <p>{{ result.book.title }}</p>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -75,8 +92,9 @@ export default {
   },
 };
 </script>
+
 <style scoped>
-.table {
+/* .table {
   padding: 20px;
   width: 80%;
   margin: auto;
@@ -86,29 +104,52 @@ export default {
   padding: 5px;
   width: 20%;
   height: 340px;
-  display: inline-block;
+  display: inline-block; */
   /* position: relative;
   margin: 1%; */
-}
+/* } */
 
-.book_poster {
+/* .book_poster {
   width: 25%;
   height: 340px;
-  float: left;
+  float: left; */
   /* position: relative; */
-}
+/* } */
 
-.book_details {
+/* .book_details { */
   /* border: 1px solid black; */
-  height: auto;
+  /* height: auto;
   background-color: green;
   position: absolute;
   width: 200px;
   margin-top: auto;
-}
+} */
 
-.book_details > p {
+/* .book_details > p {
   margin: 5px;
   text-align: center;
+} */
+
+.card-deck{
+    margin-top: 10px;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: .5rem;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.card {
+  background: #564f6f;;
+  border: 1px solid #d1d7e0;
+}
+
+.card-footer {
+  background: #4c495d;
 }
 </style>
