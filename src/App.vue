@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div class="container">
     <!-- <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> -->
   </div>
@@ -13,10 +13,10 @@
 } */
 
 #app {
-  height: 100vh;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   background-color: #2D283E;
   color: #D1D7E0;
+  min-height: 100vh;
 }
 
 /* #app {
