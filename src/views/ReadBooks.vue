@@ -1,21 +1,42 @@
 <template>
   <TheHeader />
-<div class="container">
-  <div class="card-deck">
-  <div class="card text-center my-3" @click="getData(result)"
-      v-for="result in results"
-      :key="result.id">
-    <img class="card-img-top" :src="result.poster">
-    <div class="card-body">
-      <h5 class="card-title">{{ result.book.title }}</h5>
-      <p class="card-text">{{ result.author.name + " " + result.author.surname }}</p>
+  <div class="container">
+    <div class="input-group input-group-lg my-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-lg"
+          >Search book</span
+        >
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Large"
+        aria-describedby="inputGroup-sizing-sm"
+        placeholder="Start entering title of book"
+        v-model="searchValue"
+      />
     </div>
-    <div class="card-footer">
-      <small>{{ result.book.genre }}</small>
+
+    <div class="card-deck">
+      <div
+        class="card text-center my-3"
+        @click="getData(result)"
+        v-for="result in filteredResults"
+        :key="result.id"
+      >
+        <img class="card-img-top" :src="result.poster" />
+        <div class="card-body">
+          <h5 class="card-title">{{ result.book.title }}</h5>
+          <p class="card-text">
+            {{ result.author.name + " " + result.author.surname }}
+          </p>
+        </div>
+        <div class="card-footer">
+          <small>{{ result.book.genre }}</small>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 
   <!-- <div class="table">
     <div
@@ -41,12 +62,29 @@ import TheHeader from "../components/TheHeader";
 export default {
   data() {
     return {
-      // api: "https://my.api.mockaroo.com",
-      // api_key: "881c9e40",
-      // results: [],
-      // results_keys: [],
-      // clicked_result: [],
+      api: "https://my.api.mockaroo.com",
+      api_key: "881c9e40",
+      results: [],
+      results_keys: [],
+      clicked_result: [],
+      searchValue: "",
     };
+  },
+  computed: {
+    filteredResults() {
+      let tempResults = this.results;
+
+      // Process search input
+      if (this.searchValue != "" && this.searchValue) {
+        tempResults = tempResults.filter((item) => {
+          return item.book.title 
+            .toUpperCase()
+            .includes(this.searchValue.toUpperCase());
+        });
+      }
+     
+      return tempResults;
+    },
   },
   components: {
     TheHeader,
@@ -105,7 +143,7 @@ export default {
   width: 20%;
   height: 340px;
   display: inline-block; */
-  /* position: relative;
+/* position: relative;
   margin: 1%; */
 /* } */
 
@@ -113,12 +151,12 @@ export default {
   width: 25%;
   height: 340px;
   float: left; */
-  /* position: relative; */
+/* position: relative; */
 /* } */
 
 /* .book_details { */
-  /* border: 1px solid black; */
-  /* height: auto;
+/* border: 1px solid black; */
+/* height: auto;
   background-color: green;
   position: absolute;
   width: 200px;
@@ -130,22 +168,22 @@ export default {
   text-align: center;
 } */
 
-.card-deck{
-    margin-top: 10px;
-    margin-left: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    grid-gap: .5rem;
+.card-deck {
+  margin-top: 10px;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 0.5rem;
 }
 
 .card-img-top {
-    width: 100%;
-    height: 20vw;
-    object-fit: cover;
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
 }
 
 .card {
-  background: #564f6f;;
+  background: #564f6f;
   border: 1px solid #d1d7e0;
 }
 
