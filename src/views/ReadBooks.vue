@@ -7,14 +7,12 @@
       v-for="result in results"
       :key="result.id"
     >
-
-    <!-- do napisania: ostylować tak, aby Był plakat, a pod nim tytuł. I poszczególne "kafelki" pokazywały się obok siebie powiedzmy, że ok 4-5 na rząd :)  -->
       <div class="book_poster">
         <img v-bind:src="result.poster" />
       </div>
 
       <div class="book_details">
-        <p>Title: {{ result.book.title }}</p>
+        <p>{{ result.book.title }}</p>
       </div>
     </div>
   </div>
@@ -26,11 +24,11 @@ import TheHeader from "../components/TheHeader";
 export default {
   data() {
     return {
-      // api: "https://my.api.mockaroo.com",
-      // api_key: "881c9e40",
-      // results: [],
-      // results_keys: [],
-      // clicked_result: [],
+      api: "https://my.api.mockaroo.com",
+      api_key: "881c9e40",
+      results: [],
+      results_keys: [],
+      clicked_result: [],
     };
   },
   components: {
@@ -66,7 +64,8 @@ export default {
           book_poster: book_data.poster,
           isbn: book_data.isbn,
           book_rate: book_data.rate.average,
-          book_votes: book_data.rate.votes
+          book_votes: book_data.rate.votes,
+          description: book_data.description,
         },
       });
     },
@@ -79,25 +78,37 @@ export default {
 <style scoped>
 .table {
   padding: 20px;
+  width: 80%;
+  margin: auto;
 }
 
 .book {
   padding: 5px;
-  width: 80%;
+  width: 20%;
   height: 340px;
-  margin: auto;
-  border: 1px solid black;
+  display: inline-block;
+  /* position: relative;
+  margin: 1%; */
 }
 
 .book_poster {
   width: 25%;
   height: 340px;
   float: left;
+  /* position: relative; */
 }
 
 .book_details {
   /* border: 1px solid black; */
-  height: 340px;
-  margin-left: 15px;
+  height: auto;
+  background-color: green;
+  position: absolute;
+  width: 200px;
+  margin-top: auto;
+}
+
+.book_details > p {
+  margin: 5px;
+  text-align: center;
 }
 </style>
