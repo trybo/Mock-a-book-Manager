@@ -37,37 +37,18 @@
       </div>
     </div>
   </div>
-
-  <!-- <div class="table">
-    <div
-      class="book"
-      v-on:click="getData(result)"
-      v-for="result in results"
-      :key="result.id"
-    >
-      <div class="book_poster">
-        <img v-bind:src="result.poster" />
-      </div>
-
-      <div class="book_details">
-        <p>{{ result.book.title }}</p>
-      </div>
-    </div>
-  </div> -->
 </template>
 
 <script>
-import TheHeader from "../components/TheHeader";
-
 export default {
   data() {
     return {
-      api: "https://my.api.mockaroo.com",
-      api_key: "881c9e40",
-      results: [],
-      results_keys: [],
-      clicked_result: [],
-      searchValue: "",
+      // api: "https://my.api.mockaroo.com",
+      // api_key: "881c9e40",
+      // results: [],
+      // results_keys: [],
+      // clicked_result: [],
+      // searchValue: "",
     };
   },
   computed: {
@@ -85,9 +66,6 @@ export default {
      
       return tempResults;
     },
-  },
-  components: {
-    TheHeader,
   },
   methods: {
     getApi() {
@@ -132,42 +110,6 @@ export default {
 </script>
 
 <style scoped>
-/* .table {
-  padding: 20px;
-  width: 80%;
-  margin: auto;
-}
-
-.book {
-  padding: 5px;
-  width: 20%;
-  height: 340px;
-  display: inline-block; */
-/* position: relative;
-  margin: 1%; */
-/* } */
-
-/* .book_poster {
-  width: 25%;
-  height: 340px;
-  float: left; */
-/* position: relative; */
-/* } */
-
-/* .book_details { */
-/* border: 1px solid black; */
-/* height: auto;
-  background-color: green;
-  position: absolute;
-  width: 200px;
-  margin-top: auto;
-} */
-
-/* .book_details > p {
-  margin: 5px;
-  text-align: center;
-} */
-
 .card-deck {
   margin-top: 10px;
   margin-left: auto;
