@@ -45,10 +45,10 @@ export default {
     return {
       // api: "https://my.api.mockaroo.com",
       // api_key: "881c9e40",
-      // results: [],
-      // results_keys: [],
-      // clicked_result: [],
-      // searchValue: "",
+      results: [],
+      results_keys: [],
+      clicked_result: [],
+      searchValue: "",
     };
   },
   computed: {

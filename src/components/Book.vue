@@ -1,6 +1,6 @@
 <template>
   <TheHeader />
-
+<GenreChart :title="title" :bookGenre="book_genre" :bookRate="book_rate" :bookVotes="book_votes" />
   <div class="table">
     <div class="button">
       <button
@@ -32,7 +32,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   data() {
@@ -50,6 +49,7 @@ export default {
       description: "",
     };
   },
+
   methods: {
     return_page() {
       this.$router.go(-1);
