@@ -6,7 +6,7 @@
       <span class="font-weight-bold">{{ title }}</span>
     </h3>
 
-    <div class="card flex-row w-70">
+    <div class="card flex-row">
       <img
         class="card-img-left example-card-img-responsive"
         :src="book_poster"
