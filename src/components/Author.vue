@@ -1,28 +1,40 @@
 <template>
   <TheHeader />
-  <h3>Author Page</h3>
   <div class="container">
-    <div class="input-group input-group-lg my-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-lg"
-          >Search book</span
-        >
-      </div>
-      <input
-        type="text"
-        class="form-control"
-        aria-label="Large"
-        aria-describedby="inputGroup-sizing-sm"
-        placeholder="Start entering title of book"
-        v-model="searchValue"
-      />
-    </div>
+  <h3 class="text-center pt-5 pb-3">Books of <span class="font-weight-bold">{{ author_name + " " + author_surname }}</span></h3>
+  
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Release year</th>
+      <th scope="col">Pages</th>
+      <th scope="col">Rate</th>
+    </tr>
+  </thead>
+  <tbody v-for="result in results" :key="result.id">
+    <tr @click="getData(result)">
+      <th scope="row">{{ result.id }}</th>
+      <td>{{ result.book.title }}</td>
+      <td>{{ result.book.genre }}</td>
+      <td>{{ result.book.release_year }}</td>
+      <td>{{ result.book.pages }}</td>
+      <td>{{ result.rate.average }}</td>
+    </tr>
+  </tbody>
+</table>
 
-    <div class="card-deck">
+<BaseButton @click="return_page()">GO BACK</BaseButton>
+
+
+
+    <!-- <div class="card-deck">
       <div
         class="card text-center my-3"
         @click="getData(result)"
-        v-for="result in filteredResults"
+        v-for="result in results"
         :key="result.id"
       >
         <img class="card-img-top" :src="result.poster" />
@@ -36,7 +48,7 @@
           <small>{{ result.book.genre }}</small>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -49,26 +61,10 @@ export default {
       results: [],
       results_keys: [],
       clicked_result: [],
-      searchValue: "",
       author_name: "",
-      author_surname: ""
+      author_surname: "",
+      row_number: 0
     };
-  },
-  computed: {
-    filteredResults() {
-      let tempResults = this.results;
-
-      // Process search input
-      if (this.searchValue != "" && this.searchValue) {
-        tempResults = tempResults.filter((item) => {
-          return item.book.title 
-            .toUpperCase()
-            .includes(this.searchValue.toUpperCase());
-        });
-      }
-     
-      return tempResults;
-    },
   },
   methods: {
     getApi() {
@@ -105,6 +101,9 @@ export default {
         },
       });
     },
+    return_page() {
+      this.$router.go(-1);
+    },
   },
   mounted() {
     this.getApi();
@@ -116,7 +115,7 @@ export default {
 </script>
 
 <style scoped>
-.card-deck {
+/* .card-deck {
   margin-top: 10px;
   margin-left: auto;
   display: grid;
@@ -137,5 +136,21 @@ export default {
 
 .card-footer {
   background: #4c495d;
+} */
+
+span {
+  color: #802bb1;;
+}
+
+thead {
+  background: #4c495d;
+}
+
+tbody {
+  background: #564f6f;
+}
+
+table {
+  color: #d1d7e0;
 }
 </style>
