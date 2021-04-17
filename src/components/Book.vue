@@ -5,10 +5,16 @@
       Info about
       <span class="font-weight-bold">{{ title }}</span>
     </h3>
-    <div class="card mx-auto" style="width: 38rem">
-      <img class="card-img-tom" :src="book_poster" />
+
+    <div class="card flex-row w-70">
+      <img
+        class="card-img-left example-card-img-responsive"
+        :src="book_poster"
+      />
       <div class="card-body">
-        <h5 class="card-title">{{ author_name + " " + author_surname }}</h5>
+        <h4 class="card-title h5 h4-sm">
+          {{ author_name + " " + author_surname }}
+        </h4>
         <p class="card-text">
           Release year: {{ release_year }}
           <br />
@@ -19,7 +25,6 @@
           {{ description }}
         </p>
       </div>
-      
     </div>
     <BaseButton @click="return_page()">GO BACK</BaseButton>
   </div>
@@ -67,57 +72,6 @@ export default {
 
 
 <style scoped>
-/* .btn {
-  background: #802bb1;
-  color: #d1d7e0;
-  width: 250px;
-}
-.button {
-  text-align: center;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.btn:hover {
-  background: #702bb1;
-  color: #e1d7e0;
-} */
-.card {
-  flex-direction: row;
-  align-items: center;
-  background: #564f6f;
-  color: #d1d7e0;
-  border: 1px solid #d1d7e0;
-}
-.card-title {
-  font-weight: bold;
-}
-.card img {
-  width: 30%;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: calc(0.25rem - 1px);
-}
-@media only screen and (max-width: 768px) {
-  a {
-    display: none;
-  }
-  .card-body {
-    padding: 0.5em 1.2em;
-  }
-  .card-body .card-text {
-    margin: 0;
-  }
-  .card img {
-    width: 50%;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  .card img {
-    width: 40%;
-  }
-}
-
 span {
   color: #802bb1;
 }
