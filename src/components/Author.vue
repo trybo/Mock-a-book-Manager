@@ -1,5 +1,6 @@
 <template>
   <TheHeader />
+  <h3>Author Page</h3>
   <div class="container">
     <div class="input-group input-group-lg my-3">
       <div class="input-group-prepend">
@@ -20,14 +21,15 @@
     <div class="card-deck">
       <div
         class="card text-center my-3"
+        @click="getData(result)"
         v-for="result in filteredResults"
         :key="result.id"
       >
-        <img class="card-img-top" :src="result.poster" @click="getData(result)"/>
+        <img class="card-img-top" :src="result.poster" />
         <div class="card-body">
           <h5 class="card-title">{{ result.book.title }}</h5>
-          <p class="card-text" @click="getAuthorBooks(result)">
-            {{ result.author.name + " " + result.author.surname }}
+          <p class="card-text">
+            {{ author_name + " " + author_surname }}
           </p>
         </div>
         <div class="card-footer">
@@ -48,6 +50,8 @@ export default {
       results_keys: [],
       clicked_result: [],
       searchValue: "",
+      author_name: "",
+      author_surname: ""
     };
   },
   computed: {
@@ -57,18 +61,18 @@ export default {
       // Process search input
       if (this.searchValue != "" && this.searchValue) {
         tempResults = tempResults.filter((item) => {
-          return item.book.title
+          return item.book.title 
             .toUpperCase()
             .includes(this.searchValue.toUpperCase());
         });
       }
-
+     
       return tempResults;
     },
   },
   methods: {
     getApi() {
-      fetch(`${this.api}/books_project.json?key=${this.api_key}`)
+      fetch(`${this.api}/authors.json?key=${this.api_key}&name=${this.author_name}&surname=${this.author_surname}`)
         .then((res) => res.json())
         .then((result) => {
           this.results = JSON.parse(JSON.stringify(result));
@@ -81,10 +85,6 @@ export default {
       this.clicked_result = item;
       this.bookPage(this.clicked_result);
     },
-    getAuthorBooks(item) {
-      this.clicked_result = item;
-      this.authorPage(this.clicked_result);
-    },
     bookPage(book_data) {
       // metoda przekierowująca na unikalną podstronę książki
       console.log(book_data.book.title);
@@ -92,8 +92,8 @@ export default {
         name: "Book", //book component
         params: {
           title: book_data.book.title,
-          author_name: book_data.author.name,
-          author_surname: book_data.author.surname,
+          author_name: this.author_name,
+          author_surname: this.author_surname,
           book_genre: book_data.book.genre,
           book_pages: book_data.book.pages,
           release_year: book_data.book.release_year,
@@ -105,20 +105,12 @@ export default {
         },
       });
     },
-    authorPage(author_data) {
-      // metoda przekierowująca na unikalną podstronę książki
-      console.log(author_data.author.name);
-      this.$router.push({
-        name: "Author", //book component
-        params: {
-          author_name: author_data.author.name,
-          author_surname: author_data.author.surname,
-        },
-      });
-    },
   },
   mounted() {
     this.getApi();
+    //załadowanie zmiennych przekazanych przez router z poprzedniego komponentu
+      (this.author_name = this.$route.params.author_name),
+      (this.author_surname = this.$route.params.author_surname)
   },
 };
 </script>
