@@ -6,7 +6,24 @@
     </h3>
 
     <div v-if="isShuffled">
-      <div class="card mx-auto" style="width: 38rem" @click="getData(results)">
+
+      <div class="card-deck">
+      <div
+        class="card text-center w-50 mx-auto">
+        <img class="card-img-top" :src="results.poster" @click="getData(results)"/>
+        <div class="card-body">
+          <h5 class="card-title">{{ results.book.title }}</h5>
+          <p class="card-text" @click="getAuthorBooks(results)">
+            {{ results.author.name + " " + results.author.surname }}
+          </p>
+        </div>
+        <div class="card-footer">
+          <small>{{ results.book.genre }}</small>
+        </div>
+      </div>
+    </div>
+
+      <!-- <div class="card mx-auto" style="width: 38rem" @click="getData(results)">
         <img class="card-img-tom" :src="results.poster" />
         <div class="card-body">
           <h5 class="card-title">{{ results.book.title }}</h5>
@@ -14,10 +31,10 @@
             {{ results.author.name + " " + results.author.surname }}
           </p>
         </div>
-      </div>
+      </div> -->
     </div>
 
-    <BaseButton @click="getApi()">{{
+    <BaseButton @click="getApi()">{{ 
       isShuffled ? "SHUFFLE AGAIN" : "SHUFFLE"
     }}</BaseButton>
 
@@ -33,8 +50,8 @@
 export default {
   data() {
     return {
-      // api: "https://my.api.mockaroo.com",
-      // api_key: "3b0093b0",
+      api: "https://my.api.mockaroo.com",
+      api_key: "3b0093b0",
       results: [],
       results_keys: [],
       clicked_result: [],
@@ -68,6 +85,10 @@ export default {
       this.clicked_result = item;
       this.bookPage(this.clicked_result);
     },
+    getAuthorBooks(item) {
+      this.clicked_result = item;
+      this.authorPage(this.clicked_result);
+    },
     bookPage(book_data) {
       // metoda przekierowująca na unikalną podstronę książki
       console.log(book_data.book.title);
@@ -84,6 +105,17 @@ export default {
           isbn: book_data.isbn,
           book_rate: book_data.rate.average,
           book_votes: book_data.rate.votes,
+        },
+      });
+    },
+    authorPage(author_data) {
+      // metoda przekierowująca na unikalną podstronę książki
+      console.log(author_data.author.name);
+      this.$router.push({
+        name: "Author", //book component
+        params: {
+          author_name: author_data.author.name,
+          author_surname: author_data.author.surname,
         },
       });
     },
@@ -105,7 +137,7 @@ export default {
   background: #702bb1;
   color: #e1d7e0;
 } */
-.card {
+/* .card {
   flex-direction: row;
   align-items: center;
   background: #564f6f;
@@ -136,9 +168,32 @@ export default {
   .card img {
     width: 40%;
   }
-}
+} */
 
 span {
   color: #802bb1;
+}
+
+.card-deck {
+  margin-top: 10px;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 0.5rem;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
+}
+
+.card {
+  background: #564f6f;
+  border: 1px solid #d1d7e0;
+}
+
+.card-footer {
+  background: #4c495d;
 }
 </style>
