@@ -1,7 +1,10 @@
 <template>
   <TheHeader />
   <div class="container">
-    <p class="h3 text-center pt-5"><span class="font-weight-bold">SHUFFLE</span> and find your book!</p>
+    <h3 class="text-center pt-5 pb-3">
+      <span class="font-weight-bold">SHUFFLE</span> and find your book!
+    </h3>
+
     <div v-if="isShuffled">
       <div class="card mx-auto" style="width: 38rem" @click="getData(results)">
         <img class="card-img-tom" :src="results.poster" />
@@ -14,7 +17,9 @@
       </div>
     </div>
 
-    <BaseButton @click="getApi()">{{ isShuffled ? "SHUFFLE AGAIN" : "SHUFFLE" }}</BaseButton>
+    <BaseButton @click="getApi()">{{
+      isShuffled ? "SHUFFLE AGAIN" : "SHUFFLE"
+    }}</BaseButton>
 
     <!-- <div class="col text-center my-3">
       <button class="btn btn-purple btn-lg" type="button" @click="getApi()">
@@ -85,7 +90,7 @@ export default {
   },
   mounted() {
     // this.getApi();
-  }
+  },
 };
 </script>
 
@@ -131,5 +136,9 @@ export default {
   .card img {
     width: 40%;
   }
+}
+
+span {
+  color: #802bb1;
 }
 </style>

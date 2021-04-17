@@ -1,7 +1,11 @@
 <template>
   <TheHeader />
   <div class="container">
-    <div class="input-group input-group-lg my-3">
+    <h3 class="text-center pt-5 pb-3">
+      Access to 
+      <span class="font-weight-bold">millions of books</span>
+    </h3>
+    <div class="input-group input-group-lg my-3 align-item-center">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-lg"
           >Search book</span
@@ -145,5 +149,9 @@ export default {
 
 .card-footer {
   background: #4c495d;
+}
+
+span {
+  color: #802bb1;
 }
 </style>

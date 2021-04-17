@@ -1,34 +1,37 @@
 <template>
   <TheHeader />
   <div class="container">
-  <h3 class="text-center pt-5 pb-3">Books of <span class="font-weight-bold">{{ author_name + " " + author_surname }}</span></h3>
-  
-<table class="table table-hover table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Genre</th>
-      <th scope="col">Release year</th>
-      <th scope="col">Pages</th>
-      <th scope="col">Rate</th>
-    </tr>
-  </thead>
-  <tbody v-for="result in results" :key="result.id">
-    <tr @click="getData(result)">
-      <th scope="row">{{ result.id }}</th>
-      <td>{{ result.book.title }}</td>
-      <td>{{ result.book.genre }}</td>
-      <td>{{ result.book.release_year }}</td>
-      <td>{{ result.book.pages }}</td>
-      <td>{{ result.rate.average }}</td>
-    </tr>
-  </tbody>
-</table>
+    <h3 class="text-center pt-5 pb-3">
+      Books of
+      <span class="font-weight-bold">{{
+        author_name + " " + author_surname
+      }}</span>
+    </h3>
 
-<BaseButton @click="return_page()">GO BACK</BaseButton>
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Release year</th>
+          <th scope="col">Pages</th>
+          <th scope="col">Rate</th>
+        </tr>
+      </thead>
+      <tbody v-for="result in results" :key="result.id">
+        <tr @click="getData(result)">
+          <th scope="row">{{ result.id }}</th>
+          <td>{{ result.book.title }}</td>
+          <td>{{ result.book.genre }}</td>
+          <td>{{ result.book.release_year }}</td>
+          <td>{{ result.book.pages }}</td>
+          <td>{{ result.rate.average }}</td>
+        </tr>
+      </tbody>
+    </table>
 
-
+    <BaseButton @click="return_page()">GO BACK</BaseButton>
 
     <!-- <div class="card-deck">
       <div
@@ -62,13 +65,14 @@ export default {
       results_keys: [],
       clicked_result: [],
       author_name: "",
-      author_surname: "",
-      row_number: 0
+      author_surname: ""
     };
   },
   methods: {
     getApi() {
-      fetch(`${this.api}/authors.json?key=${this.api_key}&name=${this.author_name}&surname=${this.author_surname}`)
+      fetch(
+        `${this.api}/authors.json?key=${this.api_key}&name=${this.author_name}&surname=${this.author_surname}`
+      )
         .then((res) => res.json())
         .then((result) => {
           this.results = JSON.parse(JSON.stringify(result));
@@ -108,8 +112,8 @@ export default {
   mounted() {
     this.getApi();
     //załadowanie zmiennych przekazanych przez router z poprzedniego komponentu
-      (this.author_name = this.$route.params.author_name),
-      (this.author_surname = this.$route.params.author_surname)
+    (this.author_name = this.$route.params.author_name),
+      (this.author_surname = this.$route.params.author_surname);
   },
 };
 </script>
@@ -139,7 +143,7 @@ export default {
 } */
 
 span {
-  color: #802bb1;;
+  color: #802bb1;
 }
 
 thead {
