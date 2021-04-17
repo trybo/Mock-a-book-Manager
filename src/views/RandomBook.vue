@@ -1,7 +1,7 @@
 <template>
   <TheHeader />
   <div class="container">
-    <p class="h3 text-center pt-3"><span class="font-weight-bold">SHUFFLE</span> and find your book!</p>
+    <p class="h3 text-center pt-5"><span class="font-weight-bold">SHUFFLE</span> and find your book!</p>
     <div v-if="isShuffled">
       <div class="card mx-auto" style="width: 38rem" @click="getData(results)">
         <img class="card-img-tom" :src="results.poster" />
@@ -13,11 +13,14 @@
         </div>
       </div>
     </div>
-    <div class="col text-center my-3">
+
+    <BaseButton @click="getApi()">{{ isShuffled ? "SHUFFLE AGAIN" : "SHUFFLE" }}</BaseButton>
+
+    <!-- <div class="col text-center my-3">
       <button class="btn btn-purple btn-lg" type="button" @click="getApi()">
         {{ isShuffled ? "SHUFFLE AGAIN" : "SHUFFLE" }}
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -35,6 +38,9 @@ export default {
     };
   },
   methods: {
+    // clickButton() {
+    //   this.isShuffled = true;
+    // },
     getApi() {
       this.getRandomNumber();
       fetch(
@@ -77,11 +83,14 @@ export default {
       });
     },
   },
+  mounted() {
+    // this.getApi();
+  }
 };
 </script>
 
 <style scoped>
-.btn {
+/* .btn {
   background: #802bb1;
   color: #d1d7e0;
   width: 250px;
@@ -90,7 +99,7 @@ export default {
 .btn:hover {
   background: #702bb1;
   color: #e1d7e0;
-}
+} */
 .card {
   flex-direction: row;
   align-items: center;

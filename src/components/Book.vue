@@ -1,8 +1,7 @@
 <template>
   <TheHeader />
-<GenreChart :title="title" :bookGenre="book_genre" :bookRate="book_rate" :bookVotes="book_votes" />
   <div class="table">
-    <div class="button">
+    <!-- <div class="button">
       <button
         class="btn btn-purple btn-lg"
         type="button"
@@ -10,7 +9,9 @@
       >
         {{ "Go Back" }}
       </button>
-    </div>
+    </div> -->
+
+  <BaseButton @click="return_page()">GO BACK</BaseButton>
 
     <div>
       <div class="card mx-auto" style="width: 38rem">
@@ -74,7 +75,7 @@ export default {
 
 
 <style scoped>
-.btn {
+/* .btn {
   background: #802bb1;
   color: #d1d7e0;
   width: 250px;
@@ -89,7 +90,7 @@ export default {
 .btn:hover {
   background: #702bb1;
   color: #e1d7e0;
-}
+} */
 .card {
   flex-direction: row;
   align-items: center;
