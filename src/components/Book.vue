@@ -1,35 +1,27 @@
 <template>
   <TheHeader />
-  <div class="table">
-    <!-- <div class="button">
-      <button
-        class="btn btn-purple btn-lg"
-        type="button"
-        v-on:click="return_page()"
-      >
-        {{ "Go Back" }}
-      </button>
-    </div> -->
-
-  <BaseButton @click="return_page()">GO BACK</BaseButton>
-
-    <div>
-      <div class="card mx-auto" style="width: 38rem">
-        <img class="card-img-tom" :src="book_poster" />
-        <div class="card-body">
-          <h5 class="card-title">{{ title }}</h5>
-          <p class="card-text">
-            {{ author_name + " " + author_surname }} <br />
-            {{ release_year }} <br />
-            {{ book_pages }} <br />
-            {{ book_genre }} <br />
-            {{ isbn }} <br />
-            {{ book_rate }} / {{ book_votes }} <br />
-            {{ description }}
-          </p>
-        </div>
+  <div class="container">
+    <h3 class="text-center pt-5 pb-3">
+      Info about
+      <span class="font-weight-bold">{{ title }}</span>
+    </h3>
+    <div class="card mx-auto" style="width: 38rem">
+      <img class="card-img-tom" :src="book_poster" />
+      <div class="card-body">
+        <h5 class="card-title">{{ author_name + " " + author_surname }}</h5>
+        <p class="card-text">
+          Release year: {{ release_year }}
+          <br />
+          Number of pages: {{ book_pages }} <br />
+          Genre: {{ book_genre }} <br />
+          ISBN: {{ isbn }} <br />
+          Rate: {{ book_rate }} / {{ book_votes }} <br /><br />
+          {{ description }}
+        </p>
       </div>
+      
     </div>
+    <BaseButton @click="return_page()">GO BACK</BaseButton>
   </div>
 </template>
 
@@ -95,6 +87,8 @@ export default {
   flex-direction: row;
   align-items: center;
   background: #564f6f;
+  color: #d1d7e0;
+  border: 1px solid #d1d7e0;
 }
 .card-title {
   font-weight: bold;
@@ -122,5 +116,9 @@ export default {
   .card img {
     width: 40%;
   }
+}
+
+span {
+  color: #802bb1;
 }
 </style>
