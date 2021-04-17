@@ -4,21 +4,23 @@
     <router-link to="/"><h1 >Mock-a-book (Manager)</h1></router-link>
     <h4 class="font-weight-light">Discover the world of random books</h4>
     <HomeNavbar />
+    <HomeFooter />
   </div>
 </template>
 
 <script>
 import HomeNavbar from "../components/HomeNavbar.vue";
+import HomeFooter from "../components/HomeFooter.vue";
 
 export default {
   components: {
     HomeNavbar,
+    HomeFooter
   },
 };
 </script>
 
 <style scoped>
-
 .container a{
   text-decoration: none;
 }
