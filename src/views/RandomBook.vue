@@ -23,9 +23,7 @@
     </div>
     </div>
 
-    <BaseButton @click="getApi()">{{ 
-      isShuffled ? "SHUFFLE AGAIN" : "SHUFFLE"
-    }}</BaseButton>
+    <BaseButton @click="getApi()">SHUFFLE</BaseButton>
   </div>
 </template>
 

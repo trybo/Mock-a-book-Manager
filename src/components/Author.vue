@@ -7,13 +7,7 @@
         author_name + " " + author_surname
       }}</template>
     </BaseText>
-    <!-- <h3 class="text-center pt-5 pb-3">
-      Books of
-      <span class="font-weight-bold">{{
-        author_name + " " + author_surname
-      }}</span>
-    </h3> -->
-
+    
     <table class="table table-hover table-bordered">
       <thead>
         <tr>
