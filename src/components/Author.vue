@@ -37,7 +37,7 @@
       </tbody>
     </table>
 
-    <BaseButton @click="return_page()">GO BACK</BaseButton>
+    <BaseButton @click="return_page()" class="pb-4">GO BACK</BaseButton>
 
     <!-- <div class="card-deck">
       <div
@@ -158,6 +158,7 @@ thead {
 
 tbody {
   background: #564f6f;
+  cursor: pointer;
 }
 
 table {

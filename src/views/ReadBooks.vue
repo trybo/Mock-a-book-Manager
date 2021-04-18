@@ -2,8 +2,8 @@
   <TheHeader />
   <div class="container">
     <BaseText>
-    Access to 
-    <template v-slot:purple-text>millions of books</template>
+      Access to
+      <template v-slot:purple-text>millions of books</template>
     </BaseText>
     <div class="input-group input-group-lg my-3 align-item-center">
       <div class="input-group-prepend">
@@ -19,11 +19,10 @@
         placeholder="Start entering title of book"
         v-model="searchValue"
       />
-     
     </div>
     <div v-if="searchValue">
- <BaseButton @click="clearSearch()">CLEAR SEARCH</BaseButton>
-</div>
+      <BaseButton @click="clearSearch()">CLEAR SEARCH</BaseButton>
+    </div>
 
     <div class="card-deck">
       <div
@@ -31,7 +30,11 @@
         v-for="result in filteredResults"
         :key="result.id"
       >
-        <img class="card-img-top" :src="result.poster" @click="getData(result)"/>
+        <img
+          class="card-img-top"
+          :src="result.poster"
+          @click="getData(result)"
+        />
         <div class="card-body">
           <h5 class="card-title">{{ result.book.title }}</h5>
           <p class="card-text" @click="getAuthorBooks(result)">
@@ -56,7 +59,6 @@ export default {
       results_keys: [],
       clicked_result: [],
       searchValue: "",
-      
     };
   },
   computed: {
@@ -73,7 +75,6 @@ export default {
       }
       return tempResults;
     },
-
   },
   methods: {
     getApi() {
@@ -127,7 +128,7 @@ export default {
     },
     clearSearch() {
       this.searchValue = "";
-    }
+    },
   },
   mounted() {
     this.getApi();
@@ -153,6 +154,7 @@ export default {
 .card {
   background: #564f6f;
   border: 1px solid #d1d7e0;
+  cursor: pointer;
 }
 
 .card-footer {
