@@ -5,10 +5,6 @@
     Access to 
     <template v-slot:purple-text>millions of books</template>
     </BaseText>
-    <!-- <h3 class="text-center pt-5 pb-3">
-      Access to 
-      <span class="font-weight-bold">millions of books</span>
-    </h3> -->
     <div class="input-group input-group-lg my-3 align-item-center">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-lg"
@@ -23,7 +19,11 @@
         placeholder="Start entering title of book"
         v-model="searchValue"
       />
+     
     </div>
+    <div v-if="searchValue">
+ <BaseButton @click="clearSearch()">CLEAR SEARCH</BaseButton>
+</div>
 
     <div class="card-deck">
       <div
@@ -56,6 +56,7 @@ export default {
       results_keys: [],
       clicked_result: [],
       searchValue: "",
+      
     };
   },
   computed: {
@@ -70,9 +71,9 @@ export default {
             .includes(this.searchValue.toUpperCase());
         });
       }
-
       return tempResults;
     },
+
   },
   methods: {
     getApi() {
@@ -124,6 +125,9 @@ export default {
         },
       });
     },
+    clearSearch() {
+      this.searchValue = "";
+    }
   },
   mounted() {
     this.getApi();
@@ -154,8 +158,4 @@ export default {
 .card-footer {
   background: #4c495d;
 }
-
-/* span {
-  color: #802bb1;
-} */
 </style>
