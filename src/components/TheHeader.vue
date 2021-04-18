@@ -1,6 +1,14 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">Mock-a-book</a>
+    <router-link class="navbar-brand ml-3" to="/">
+      <img
+        src="../assets/logo.png"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+      />
+      Mock-a-book
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,38 +22,21 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+      <ul class="navbar-nav ml-auto mr-3">
+        <li class="nav-item mx-2">
           <router-link class="nav-link" to="/addbook">Add Book</router-link>
         </li>
-        <li class="nav-item">
+        <li class="nav-item mx-2">
           <router-link class="nav-link" to="/readbooks">Read Books</router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/randombook">Random Book</router-link>
+        <li class="nav-item mx-2">
+          <router-link class="nav-link" to="/randombook"
+            >Random Book</router-link
+          >
         </li>
       </ul>
     </div>
   </nav>
-
-  <!-- <header>
-    <nav>
-      <h1>
-        <router-link to="/">BooksManager</router-link>
-      </h1>
-      <ul>
-        <li>
-          <router-link to="/addbook">Add Book</router-link>
-        </li>
-        <li>
-          <router-link to="/readbooks">Read Books</router-link>
-        </li>
-        <li>
-          <router-link to="/randombook">Random Book</router-link>
-        </li>
-      </ul>
-    </nav>
-  </header> -->
 </template>
 
 <style scoped>
@@ -53,28 +44,15 @@
   background-color: #802bb1;
 }
 
-/* header a {
-  text-decoration: none;
-  color: #f391e3;
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid transparent;
-}
-
 a:active,
 a:hover,
 a.router-link-active {
-  border: 1px solid #f391e3;
+  border: 1px solid #d1d7e0;
 }
 
-h1 a {
-  color: rgb(0, 0, 0);
-  margin: 0;
-}
-
-h1 a:hover,
-h1 a:active,
-h1 a.router-link-active {
+.navbar-brand:active,
+.navbar-brand:hover,
+.navbar-brand.router-link-active {
   border-color: transparent;
-} */
+}
 </style>

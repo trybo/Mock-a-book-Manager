@@ -1,10 +1,15 @@
 <template>
   <TheHeader />
   <div class="container">
-    <h3 class="text-center pt-5 pb-3">
+    <BaseText>
+    Info about 
+    <template v-slot:purple-text>{{ title }}</template>
+    </BaseText>
+
+    <!-- <h3 class="text-center pt-5 pb-3">
       Info about
       <span class="font-weight-bold">{{ title }}</span>
-    </h3>
+    </h3> -->
 
     <div class="card flex-row">
       <img
@@ -84,11 +89,11 @@ export default {
 
 
 <style scoped>
-span {
+/* span {
   color: #802bb1;
-}
+} */
 
 .card-body {
-  background-color: #5e1b85;
+  background-color: #564f6f;
 }
 </style>
