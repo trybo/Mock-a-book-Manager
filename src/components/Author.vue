@@ -1,12 +1,18 @@
 <template>
   <TheHeader />
   <div class="container">
-    <h3 class="text-center pt-5 pb-3">
+    <BaseText>
+    Books of 
+    <template v-slot:purple-text>{{
+        author_name + " " + author_surname
+      }}</template>
+    </BaseText>
+    <!-- <h3 class="text-center pt-5 pb-3">
       Books of
       <span class="font-weight-bold">{{
         author_name + " " + author_surname
       }}</span>
-    </h3>
+    </h3> -->
 
     <table class="table table-hover table-bordered">
       <thead>
@@ -142,9 +148,9 @@ export default {
   background: #4c495d;
 } */
 
-span {
+/* span {
   color: #802bb1;
-}
+} */
 
 thead {
   background: #4c495d;

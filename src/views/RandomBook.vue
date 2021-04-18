@@ -1,9 +1,13 @@
 <template>
   <TheHeader />
   <div class="container">
-    <h3 class="text-center pt-5 pb-3">
+    <BaseText>
+    Find your book - 
+    <template v-slot:purple-text>SHUFFLE books</template>
+    </BaseText>
+    <!-- <h3 class="text-center pt-5 pb-3">
       <span class="font-weight-bold">SHUFFLE</span> and find your book!
-    </h3>
+    </h3> -->
 
     <div v-if="isShuffled">
 
@@ -167,9 +171,9 @@ export default {
   }
 } */
 
-span {
+/* span {
   color: #802bb1;
-}
+} */
 
 .card-deck {
   margin-top: 10px;

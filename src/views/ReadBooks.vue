@@ -1,10 +1,14 @@
 <template>
   <TheHeader />
   <div class="container">
-    <h3 class="text-center pt-5 pb-3">
+    <BaseText>
+    Access to 
+    <template v-slot:purple-text>millions of books</template>
+    </BaseText>
+    <!-- <h3 class="text-center pt-5 pb-3">
       Access to 
       <span class="font-weight-bold">millions of books</span>
-    </h3>
+    </h3> -->
     <div class="input-group input-group-lg my-3 align-item-center">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-lg"
@@ -46,8 +50,8 @@
 export default {
   data() {
     return {
-      // api: "https://my.api.mockaroo.com",
-      // api_key: "881c9e40",
+      api: "https://my.api.mockaroo.com",
+      api_key: "881c9e40",
       results: [],
       results_keys: [],
       clicked_result: [],
@@ -151,7 +155,7 @@ export default {
   background: #4c495d;
 }
 
-span {
+/* span {
   color: #802bb1;
-}
+} */
 </style>
