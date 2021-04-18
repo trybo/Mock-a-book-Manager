@@ -31,8 +31,9 @@
         </p>
       </div>
     </div>
-    <BaseButton @click="return_page()">FIND OTHER BOOKS</BaseButton>
-    <BaseButton @click="authorPage()">VIEW AUTHORS BOOKS</BaseButton>
+    <div class="row">
+    <BaseButton @click="return_page()">LIST OF BOOKS</BaseButton>
+    <BaseButton @click="authorPage()">AUTHOR'S BOOKS</BaseButton></div>
   </div>
 </template>
 
