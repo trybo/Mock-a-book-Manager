@@ -5,7 +5,7 @@ import TheHeader from './components/TheHeader.vue'
 import BaseButton from './components/BaseButton.vue'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import 'vue3-chart-v2'
 // createApp(App).use(router).mount('#app')
 
 const app = createApp(App)
