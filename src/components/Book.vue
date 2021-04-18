@@ -26,7 +26,8 @@
         </p>
       </div>
     </div>
-    <BaseButton @click="return_page()">GO BACK</BaseButton>
+    <BaseButton @click="return_page()">FIND OTHER BOOKS</BaseButton>
+    <BaseButton @click="authorPage()">VIEW AUTHORS BOOKS</BaseButton>
   </div>
 </template>
 
@@ -50,7 +51,18 @@ export default {
 
   methods: {
     return_page() {
-      this.$router.go(-1);
+      this.$router.push({
+        name: "ReadBooks"
+      });
+    },
+    authorPage() {
+      this.$router.push({
+        name: "Author", //book component
+        params: {
+          author_name: this.author_name,
+          author_surname: this.author_surname,
+        },
+      });
     },
   },
   mounted() {
@@ -74,5 +86,9 @@ export default {
 <style scoped>
 span {
   color: #802bb1;
+}
+
+.card-body {
+  background-color: #5e1b85;
 }
 </style>

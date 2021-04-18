@@ -17,8 +17,8 @@ export default defineComponent({
   components: { GenreChart },
   data() {
     return {
-      api: "https://my.api.mockaroo.com",
-      api_key: "5ffd1860",
+      // api: "https://my.api.mockaroo.com",
+      // api_key: "5ffd1860",
       state: {
         genres: [],
         chartData: {},
@@ -37,7 +37,8 @@ export default defineComponent({
       fetch(`${this.api}/books_project2.json?key=${this.api_key}`)
         .then((res) => res.json())
         .then((result) => {
-          result.forEach((element) => {
+          let parsed = JSON.parse(JSON.stringify(result))
+          parsed.forEach((element) => {
             typeof element.book.genre;
             if (this.state.genres[element.book.genre]) {
               this.state.genres[element.book.genre] += 1;
@@ -45,9 +46,12 @@ export default defineComponent({
               this.state.genres[element.book.genre] = 1;
             }
           });
+          // w tym miejscu jakoś trzea opanwoać przypisanie tych wartosci do odpowiednich zmiennych 
+          // zeby przekazywało je do charta i powinno już być git
+            console.log(this.state.genres["History"]) // zwraca ilość wszystkich genres = History
+
         });
 
-      console.log(this.state.genres["Adventure"]);
 
       this.state.chartData = {
         labels: this.state.genre,
