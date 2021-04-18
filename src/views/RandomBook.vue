@@ -5,12 +5,7 @@
     Find your book - 
     <template v-slot:purple-text>SHUFFLE books</template>
     </BaseText>
-    <!-- <h3 class="text-center pt-5 pb-3">
-      <span class="font-weight-bold">SHUFFLE</span> and find your book!
-    </h3> -->
-
     <div v-if="isShuffled">
-
       <div class="card-deck">
       <div
         class="card text-center w-50 mx-auto">
@@ -26,27 +21,11 @@
         </div>
       </div>
     </div>
-
-      <!-- <div class="card mx-auto" style="width: 38rem" @click="getData(results)">
-        <img class="card-img-tom" :src="results.poster" />
-        <div class="card-body">
-          <h5 class="card-title">{{ results.book.title }}</h5>
-          <p class="card-text">
-            {{ results.author.name + " " + results.author.surname }}
-          </p>
-        </div>
-      </div> -->
     </div>
 
     <BaseButton @click="getApi()">{{ 
       isShuffled ? "SHUFFLE AGAIN" : "SHUFFLE"
     }}</BaseButton>
-
-    <!-- <div class="col text-center my-3">
-      <button class="btn btn-purple btn-lg" type="button" @click="getApi()">
-        {{ isShuffled ? "SHUFFLE AGAIN" : "SHUFFLE" }}
-      </button>
-    </div> -->
   </div>
 </template>
 
@@ -66,6 +45,7 @@ export default {
   methods: {
     getApi() {
       this.getRandomNumber();
+      this.isShuffled = true;
       fetch(
         `${this.api}/books_project/${this.randomNumber}.json?key=${this.api_key}`
       )
@@ -75,7 +55,7 @@ export default {
           this.results_keys = Object.keys(this.results["0"]);
         })
         .then(console.log(this.results));
-      this.isShuffled = true;
+      
     },
     getRandomNumber() {
       // Losujemy liczbę z przedziału 1-100, bo pobieram tylko 1 rekord z mocaroo
@@ -128,53 +108,6 @@ export default {
 </script>
 
 <style scoped>
-/* .btn {
-  background: #802bb1;
-  color: #d1d7e0;
-  width: 250px;
-}
-
-.btn:hover {
-  background: #702bb1;
-  color: #e1d7e0;
-} */
-/* .card {
-  flex-direction: row;
-  align-items: center;
-  background: #564f6f;
-}
-.card-title {
-  font-weight: bold;
-}
-.card img {
-  width: 30%;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: calc(0.25rem - 1px);
-}
-@media only screen and (max-width: 768px) {
-  a {
-    display: none;
-  }
-  .card-body {
-    padding: 0.5em 1.2em;
-  }
-  .card-body .card-text {
-    margin: 0;
-  }
-  .card img {
-    width: 50%;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  .card img {
-    width: 40%;
-  }
-} */
-
-/* span {
-  color: #802bb1;
-} */
-
 .card-deck {
   margin-top: 10px;
   margin-left: auto;
