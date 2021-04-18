@@ -23,9 +23,7 @@
     </div>
     </div>
 
-    <BaseButton @click="getApi()">{{ 
-      isShuffled ? "SHUFFLE AGAIN" : "SHUFFLE"
-    }}</BaseButton>
+    <BaseButton @click="getApi()">SHUFFLE</BaseButton>
   </div>
 </template>
 
@@ -125,6 +123,7 @@ export default {
 .card {
   background: #564f6f;
   border: 1px solid #d1d7e0;
+  cursor: pointer;
 }
 
 .card-footer {

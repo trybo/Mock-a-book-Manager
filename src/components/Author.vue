@@ -7,13 +7,7 @@
         author_name + " " + author_surname
       }}</template>
     </BaseText>
-    <!-- <h3 class="text-center pt-5 pb-3">
-      Books of
-      <span class="font-weight-bold">{{
-        author_name + " " + author_surname
-      }}</span>
-    </h3> -->
-
+    
     <table class="table table-hover table-bordered">
       <thead>
         <tr>
@@ -37,7 +31,7 @@
       </tbody>
     </table>
 
-    <BaseButton @click="return_page()">GO BACK</BaseButton>
+    <BaseButton @click="return_page()" class="pb-4">GO BACK</BaseButton>
 
     <!-- <div class="card-deck">
       <div
@@ -158,6 +152,7 @@ thead {
 
 tbody {
   background: #564f6f;
+  cursor: pointer;
 }
 
 table {
