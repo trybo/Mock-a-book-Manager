@@ -18,33 +18,32 @@ export default defineComponent({
       api: "https://my.api.mockaroo.com",
       api_key: "233f2e40",
       state: {
-        labels: [],
         loaded: false,
-        values: [],
+        dict: [],
         chartData: {},
         chartOptions: {
           responsive: false,
         },
       },
     };
-  },
+  },this.state.values,
   methods: {
     getApi() {
       fetch(`${this.api}/books_project.json?key=${this.api_key}`)
         .then((res) => res.json())
         .then((result) => {
           result.forEach((element) => {
-            this.state.values.push({
+            this.state.dict.push({
               key: element.author.surname,
               value: element.rate.average,
             });
           });
 
           this.state.chartData = {
-            labels: this.state.labels,
+            labels: Object.keys(this.state.dict),
             datasets: [
               {
-                data: this.state.values,
+                data: Object.keys(this.state.dict),
                 label: "Data One",
                 backgroundColor: "#f87979",
                 borderColor: "#80b6f4",
