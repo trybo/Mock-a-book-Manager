@@ -7,8 +7,6 @@ import BaseText from './components/BaseText.vue'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-// createApp(App).use(router).mount('#app')
-
 const app = createApp(App)
 
 app.use(router);

@@ -13,20 +13,20 @@ import RaitingChart from "./LineChart";
 export default defineComponent({
   name: "RaitingChart",
   components: { RaitingChart },
-  data() {
-    return {
-      api: "https://my.api.mockaroo.com",
-      api_key: "233f2e40",
-      state: {
-        loaded: false,
-        dict: [],
-        chartData: {},
-        chartOptions: {
-          responsive: false,
-        },
-      },
-    };
-  },this.state.values,
+  // data() {
+  //   return {
+  //     api: "https://my.api.mockaroo.com",
+  //     api_key: "233f2e40",
+  //     state: {
+  //       loaded: false,
+  //       dict: [],
+  //       chartData: {},
+  //       chartOptions: {
+  //         responsive: false,
+  //       },
+  //     },
+  //   };
+  // },this.state.values,
   methods: {
     getApi() {
       fetch(`${this.api}/books_project.json?key=${this.api_key}`)
