@@ -8,7 +8,12 @@
       }}</template>
     </BaseText>
 
-    <table class="table table-hover table-bordered">
+    <BaseButton @click="showStats()">{{isChart ? "BOOKS" : "STATS"}}</BaseButton>
+
+   <AuthorPieChart :results="results" v-if="isChart"/>
+   <AuthorBarChart :results="results" v-if="isChart"/>
+
+    <table class="table table-hover table-bordered" v-else>
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -36,6 +41,9 @@
 </template>
 
 <script>
+import AuthorPieChart from "../components/charts/AuthorPieChart.vue"
+import AuthorBarChart from "../components/charts/AuthorBarChart.vue"
+
 export default {
   data() {
     return {
@@ -46,9 +54,17 @@ export default {
       clicked_result: [],
       author_name: "",
       author_surname: "",
+      isChart: false,
     };
   },
+  components: { 
+    AuthorPieChart,
+    AuthorBarChart
+  },
   methods: {
+    showStats() {
+      this.isChart = !this.isChart;
+    },
     getApi() {
       fetch(
         `${this.api}/authors.json?key=${this.api_key}&name=${this.author_name}&surname=${this.author_surname}`
