@@ -2,12 +2,12 @@
   <TheHeader />
   <div class="container">
     <BaseText>
-    Books of 
-    <template v-slot:purple-text>{{
+      Books of
+      <template v-slot:purple-text>{{
         author_name + " " + author_surname
       }}</template>
     </BaseText>
-    
+
     <table class="table table-hover table-bordered">
       <thead>
         <tr>
@@ -32,26 +32,6 @@
     </table>
 
     <BaseButton @click="return_page()" class="pb-4">GO BACK</BaseButton>
-
-    <!-- <div class="card-deck">
-      <div
-        class="card text-center my-3"
-        @click="getData(result)"
-        v-for="result in results"
-        :key="result.id"
-      >
-        <img class="card-img-top" :src="result.poster" />
-        <div class="card-body">
-          <h5 class="card-title">{{ result.book.title }}</h5>
-          <p class="card-text">
-            {{ author_name + " " + author_surname }}
-          </p>
-        </div>
-        <div class="card-footer">
-          <small>{{ result.book.genre }}</small>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -65,7 +45,7 @@ export default {
       results_keys: [],
       clicked_result: [],
       author_name: "",
-      author_surname: ""
+      author_surname: "",
     };
   },
   methods: {
@@ -119,33 +99,6 @@ export default {
 </script>
 
 <style scoped>
-/* .card-deck {
-  margin-top: 10px;
-  margin-left: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 0.5rem;
-}
-
-.card-img-top {
-  width: 100%;
-  height: 20vw;
-  object-fit: cover;
-}
-
-.card {
-  background: #564f6f;
-  border: 1px solid #d1d7e0;
-}
-
-.card-footer {
-  background: #4c495d;
-} */
-
-/* span {
-  color: #802bb1;
-} */
-
 thead {
   background: #4c495d;
 }
