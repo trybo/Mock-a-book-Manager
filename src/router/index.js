@@ -1,10 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import AddBook from '../views/AddBook.vue'
 import ReadBooks from '../views/ReadBooks.vue'
 import RandomBook from '../views/RandomBook.vue'
-import Book from "../components/Book.vue"
-import Author from "../components/Author.vue"
+import Book from "../views/Book.vue"
+import Author from "../views/Author.vue"
 import ChartContainer from "../views/ChartContainer.vue"
 import LineChartContainer from "../views/LineChartContainer.vue"
 
@@ -13,11 +12,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/addbook',
-    name: 'AddBook',
-    component: AddBook
   },
   {
     path: '/readbooks',

@@ -27,7 +27,7 @@
     <div class="card-deck">
       <div
         class="card text-center my-3"
-        v-for="result in filteredResults"
+        v-for="result in filteredBooks"
         :key="result.id"
       >
         <img
@@ -53,8 +53,8 @@
 export default {
   data() {
     return {
-      // api: "https://my.api.mockaroo.com",
-      // api_key: "881c9e40",
+      api: "https://my.api.mockaroo.com",
+      api_key: "881c9e40",
       results: [],
       results_keys: [],
       clicked_result: [],
@@ -62,18 +62,17 @@ export default {
     };
   },
   computed: {
-    filteredResults() {
-      let tempResults = this.results;
+    filteredBooks() {
+      let tempBooks = this.results;
 
-      // Process search input
       if (this.searchValue != "" && this.searchValue) {
-        tempResults = tempResults.filter((item) => {
+        tempBooks = tempBooks.filter((item) => {
           return item.book.title
             .toUpperCase()
             .includes(this.searchValue.toUpperCase());
         });
       }
-      return tempResults;
+      return tempBooks;
     },
   },
   methods: {

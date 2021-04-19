@@ -2,13 +2,18 @@
   <TheHeader />
   <div class="container">
     <BaseText>
-    Books of 
-    <template v-slot:purple-text>{{
+      Books of
+      <template v-slot:purple-text>{{
         author_name + " " + author_surname
       }}</template>
     </BaseText>
-    
-    <table class="table table-hover table-bordered">
+
+    <BaseButton @click="showStats()">{{isChart ? "BOOKS" : "STATS"}}</BaseButton>
+
+   <AuthorPieChart :results="results" v-if="isChart"/>
+   <AuthorBarChart :results="results" v-if="isChart"/>
+
+    <table class="table table-hover table-bordered" v-else>
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -32,30 +37,13 @@
     </table>
 
     <BaseButton @click="return_page()" class="pb-4">GO BACK</BaseButton>
-
-    <!-- <div class="card-deck">
-      <div
-        class="card text-center my-3"
-        @click="getData(result)"
-        v-for="result in results"
-        :key="result.id"
-      >
-        <img class="card-img-top" :src="result.poster" />
-        <div class="card-body">
-          <h5 class="card-title">{{ result.book.title }}</h5>
-          <p class="card-text">
-            {{ author_name + " " + author_surname }}
-          </p>
-        </div>
-        <div class="card-footer">
-          <small>{{ result.book.genre }}</small>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
 <script>
+import AuthorPieChart from "../components/charts/AuthorPieChart.vue"
+import AuthorBarChart from "../components/charts/AuthorBarChart.vue"
+
 export default {
   data() {
     return {
@@ -65,10 +53,18 @@ export default {
       results_keys: [],
       clicked_result: [],
       author_name: "",
-      author_surname: ""
+      author_surname: "",
+      isChart: false,
     };
   },
+  components: { 
+    AuthorPieChart,
+    AuthorBarChart
+  },
   methods: {
+    showStats() {
+      this.isChart = !this.isChart;
+    },
     getApi() {
       fetch(
         `${this.api}/authors.json?key=${this.api_key}&name=${this.author_name}&surname=${this.author_surname}`
@@ -119,33 +115,6 @@ export default {
 </script>
 
 <style scoped>
-/* .card-deck {
-  margin-top: 10px;
-  margin-left: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 0.5rem;
-}
-
-.card-img-top {
-  width: 100%;
-  height: 20vw;
-  object-fit: cover;
-}
-
-.card {
-  background: #564f6f;
-  border: 1px solid #d1d7e0;
-}
-
-.card-footer {
-  background: #4c495d;
-} */
-
-/* span {
-  color: #802bb1;
-} */
-
 thead {
   background: #4c495d;
 }

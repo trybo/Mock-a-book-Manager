@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
     <router-link class="navbar-brand ml-3" to="/">
       <img
-        src="../assets/logo.png"
+        src="../../assets/logo.png"
         width="30"
         height="30"
         class="d-inline-block align-top"
@@ -24,10 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto mr-3">
         <li class="nav-item mx-2">
-          <router-link class="nav-link" to="/addbook">Add Book</router-link>
-        </li>
-        <li class="nav-item mx-2">
-          <router-link class="nav-link" to="/readbooks">Read Books</router-link>
+          <router-link class="nav-link" to="/readbooks">Books</router-link>
         </li>
         <li class="nav-item mx-2">
           <router-link class="nav-link" to="/randombook"
@@ -47,7 +44,8 @@
 a:active,
 a:hover,
 a.router-link-active {
-  border: 1px solid #d1d7e0;
+  color: #d1d7e0;
+  font-weight: bold;
 }
 
 .navbar-brand:active,

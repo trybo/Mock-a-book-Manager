@@ -1,13 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import TheHeader from './components/TheHeader.vue'
-import BaseButton from './components/BaseButton.vue'
-import BaseText from './components/BaseText.vue'
+import TheHeader from './components/layout/TheHeader.vue'
+import BaseButton from './components/ui/BaseButton.vue'
+import BaseText from './components/ui/BaseText.vue'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-// createApp(App).use(router).mount('#app')
 
 const app = createApp(App)
 
