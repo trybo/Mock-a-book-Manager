@@ -6,6 +6,7 @@ import RandomBook from '../views/RandomBook.vue'
 import Book from "../components/Book.vue"
 import Author from "../components/Author.vue"
 import ChartContainer from "../views/ChartContainer.vue"
+import LineChartContainer from "../views/LineChartContainer.vue"
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/Chart',
     name: 'Chart',
     component: ChartContainer
+  },
+  {
+    path: '/LineChart',
+    name: 'Linechart',
+    component: LineChartContainer
   }
   // {
   //   path: '/about',

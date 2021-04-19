@@ -1,64 +1,49 @@
 <template>
-  <div>
-    <TheHeader />
-
-    <h1>GenreChart</h1>
-    <GenreChart
-      v-if="this.state.loaded"
-      v-bind:chartData="this.state.chartData"
-      v-bind:chartOptions="this.state.chartOptions"
-    />
-  </div>
+  <RaitingChart
+    v-if="this.state.loaded"
+    v-bind:chartData="this.state.chartData"
+    v-bind:chartOptions="this.state.chartOptions"
+  />
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import GenreChart from "./Chart";
+import RaitingChart from "./LineChart";
 
 export default defineComponent({
-  name: "GenreChartContainer",
-  components: { GenreChart },
+  name: "RaitingChart",
+  components: { RaitingChart },
   data() {
     return {
       api: "https://my.api.mockaroo.com",
-      api_key: "febc6e00",
+      api_key: "233f2e40",
       state: {
-        labels: [],
         loaded: false,
-        values: [],
+        dict: [],
         chartData: {},
         chartOptions: {
           responsive: false,
         },
       },
     };
-  },
+  },this.state.values,
   methods: {
     getApi() {
       fetch(`${this.api}/books_project.json?key=${this.api_key}`)
         .then((res) => res.json())
         .then((result) => {
-          //let parsed = JSON.parse(JSON.stringify(result));
-          let genres = [];
           result.forEach((element) => {
-            if (genres[element.book.genre]) {
-              genres[element.book.genre] += 1;
-            } else {
-              genres[element.book.genre] = 1;
-            }
-          });
-          Object.keys(genres).forEach((element) => {
-            this.state.labels.push(element);
-          });
-          Object.values(genres).forEach((element) => {
-            this.state.values.push(element);
+            this.state.dict.push({
+              key: element.author.surname,
+              value: element.rate.average,
+            });
           });
 
           this.state.chartData = {
-            labels: this.state.labels,
+            labels: Object.keys(this.state.dict),
             datasets: [
               {
-                data: this.state.values,
+                data: Object.keys(this.state.dict),
                 label: "Data One",
                 backgroundColor: "#f87979",
                 borderColor: "#80b6f4",
@@ -86,4 +71,4 @@ export default defineComponent({
     this.getApi();
   },
 });
-</script>  
+</script>

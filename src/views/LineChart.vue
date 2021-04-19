@@ -1,11 +1,10 @@
 <script>
 import { defineComponent } from "vue";
-import { Pie } from "vue3-chart-v2";
+import { Line } from "vue3-chart-v2";
 
 export default defineComponent({
-  name: "Chart",
-  extends: Pie,
-  // mixins: [mixins.reactivePropa],
+  name: "LineChart",
+  extends: Line,
 
   props: {
     chartData: {
