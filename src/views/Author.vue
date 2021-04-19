@@ -35,8 +35,6 @@
         </tr>
       </tbody>
     </table>
-
-    <BaseButton @click="return_page()" class="pb-4">GO BACK</BaseButton>
   </div>
 </template>
 
@@ -100,9 +98,6 @@ export default {
           description: book_data.description,
         },
       });
-    },
-    return_page() {
-      this.$router.go(-1);
     },
   },
   mounted() {

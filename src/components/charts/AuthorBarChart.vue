@@ -18,8 +18,8 @@ export default defineComponent({
   props: ["results"],
   data() {
     return {
-      //   api: "https://my.api.mockaroo.com",
-      //   api_key: "febc6e00",
+      api: "https://my.api.mockaroo.com",
+      api_key: "febc6e00",
       state: {
         labels: [],
         loaded: false,
@@ -46,86 +46,37 @@ export default defineComponent({
   methods: {
     getData() {
       this.results.forEach((element) => {
-            this.state.dict.push({
-              key: element.author.surname,
-              value: element.rate.average,
-            });
-          });
+        this.state.labels.push(element.book.title);
+        this.state.values.push(element.rate.average);
+        console.log(this.state.labels);
+      });
 
-          this.state.chartData = {
-            labels: Object.keys(this.state.dict),
-            datasets: [
-              {
-                data: Object.keys(this.state.dict),
-                label: "Data One",
-                backgroundColor: "#f87979",
-                borderColor: "#80b6f4",
-                pointBorderColor: "#80b6f4",
-                pointBackgroundColor: "#80b6f4",
-                pointHoverBackgroundColor: "#80b6f4",
-                pointHoverBorderColor: "#80b6f4",
-                pointBorderWidth: 10,
-                pointHoverRadius: 10,
-                pointHoverBorderWidth: 1,
-                pointRadius: 3,
-                fill: false,
-                borderWidth: 4,
-              },
-            ],
-          };
-          this.state.loaded = true;
-        
+      this.state.chartData = {
+        labels: this.state.labels,
+        datasets: [
+          {
+            data: this.state.values,
+            label: "Film",
+            backgroundColor: ["red", "blue", "green", "yellow", "black", "cyan", "magenta", "white", "orange", "darkblue"],
+            borderColor: "#80b6f4",
+            pointBorderColor: "#80b6f4",
+            pointBackgroundColor: "#80b6f4",
+            pointHoverBackgroundColor: "#80b6f4",
+            pointHoverBorderColor: "#80b6f4",
+            pointBorderWidth: 10,
+            pointHoverRadius: 10,
+            pointHoverBorderWidth: 1,
+            pointRadius: 3,
+            fill: false,
+            borderWidth: 4,
+          },
+        ],
+      };
+      this.state.loaded = true;
     },
-    // getApi() {
-    //   fetch(`${this.api}/books_project.json?key=${this.api_key}`)
-    //     .then((res) => res.json())
-    //     .then((result) => {
-    //       //let parsed = JSON.parse(JSON.stringify(result));
-    //       let genres = [];
-    //       result.forEach((element) => {
-    //         if (genres[element.book.genre]) {
-    //           genres[element.book.genre] += 1;
-    //         } else {
-    //           genres[element.book.genre] = 1;
-    //         }
-    //       });
-    //       Object.keys(genres).forEach((element) => {
-    //         this.state.labels.push(element);
-    //       });
-    //       Object.values(genres).forEach((element) => {
-    //         this.state.values.push(element);
-    //       });
-
-    //       this.state.chartData = {
-    //         labels: this.state.labels,
-    //         datasets: [
-    //           {
-    //             data: this.state.values,
-    //             label: "Data One",
-    //             backgroundColor: "#f87979",
-    //             borderColor: "#80b6f4",
-    //             pointBorderColor: "#80b6f4",
-    //             pointBackgroundColor: "#80b6f4",
-    //             pointHoverBackgroundColor: "#80b6f4",
-    //             pointHoverBorderColor: "#80b6f4",
-    //             pointBorderWidth: 10,
-    //             pointHoverRadius: 10,
-    //             pointHoverBorderWidth: 1,
-    //             pointRadius: 3,
-    //             fill: false,
-    //             borderWidth: 4,
-    //           },
-    //         ],
-    //       };
-    //       this.state.loaded = true;
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // },
+   
   },
   beforeMount() {
-    // this.getApi();
     this.getData();
   },
 });

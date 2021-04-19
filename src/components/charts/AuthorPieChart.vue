@@ -65,7 +65,7 @@ export default defineComponent({
         datasets: [
           {
             data: this.state.values,
-            backgroundColor: "#564f6f",
+            backgroundColor: ["red", "blue", "green", "yellow", "black", "cyan", "magenta", "white", "orange", "darkblue"],
             borderColor: "#d1d7e0",
             pointHoverBackgroundColor: "#4c495d",
             borderWidth: 1,
@@ -75,56 +75,8 @@ export default defineComponent({
       };
       this.state.loaded = true;
     },
-    // getApi() {
-    //   fetch(`${this.api}/books_project.json?key=${this.api_key}`)
-    //     .then((res) => res.json())
-    //     .then((result) => {
-    //       //let parsed = JSON.parse(JSON.stringify(result));
-    //       let genres = [];
-    //       result.forEach((element) => {
-    //         if (genres[element.book.genre]) {
-    //           genres[element.book.genre] += 1;
-    //         } else {
-    //           genres[element.book.genre] = 1;
-    //         }
-    //       });
-    //       Object.keys(genres).forEach((element) => {
-    //         this.state.labels.push(element);
-    //       });
-    //       Object.values(genres).forEach((element) => {
-    //         this.state.values.push(element);
-    //       });
-
-    //       this.state.chartData = {
-    //         labels: this.state.labels,
-    //         datasets: [
-    //           {
-    //             data: this.state.values,
-    //             label: "Data One",
-    //             backgroundColor: "#f87979",
-    //             borderColor: "#80b6f4",
-    //             pointBorderColor: "#80b6f4",
-    //             pointBackgroundColor: "#80b6f4",
-    //             pointHoverBackgroundColor: "#80b6f4",
-    //             pointHoverBorderColor: "#80b6f4",
-    //             pointBorderWidth: 10,
-    //             pointHoverRadius: 10,
-    //             pointHoverBorderWidth: 1,
-    //             pointRadius: 3,
-    //             fill: false,
-    //             borderWidth: 4,
-    //           },
-    //         ],
-    //       };
-    //       this.state.loaded = true;
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // },
   },
   beforeMount() {
-    // this.getApi();
     this.getData();
   },
 });

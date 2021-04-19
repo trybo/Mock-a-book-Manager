@@ -31,8 +31,8 @@
 export default {
   data() {
     return {
-      // api: "https://my.api.mockaroo.com",
-      // api_key: "3b0093b0",
+      api: "https://my.api.mockaroo.com",
+      api_key: "3b0093b0",
       results: [],
       results_keys: [],
       clicked_result: [],
