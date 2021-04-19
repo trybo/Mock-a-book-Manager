@@ -5,7 +5,6 @@ import { Pie } from "vue3-chart-v2";
 export default defineComponent({
   name: "PieChart",
   extends: Pie,
-  // mixins: [mixins.reactivePropa],
 
   props: {
     chartData: {

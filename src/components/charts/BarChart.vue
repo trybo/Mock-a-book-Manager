@@ -5,7 +5,6 @@ import { Bar } from "vue3-chart-v2";
 export default defineComponent({
   name: "BarChart",
   extends: Bar,
-  // mixins: [mixins.reactivePropa],
 
   props: {
     chartData: {
