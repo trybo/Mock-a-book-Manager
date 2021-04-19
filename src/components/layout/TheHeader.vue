@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
     <router-link class="navbar-brand ml-3" to="/">
       <img
-        src="../assets/logo.png"
+        src="../../assets/logo.png"
         width="30"
         height="30"
         class="d-inline-block align-top"

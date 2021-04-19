@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import HomeNavbar from "../components/HomeNavbar.vue";
-import HomeFooter from "../components/HomeFooter.vue";
+import HomeNavbar from "../components/layout/HomeNavbar.vue";
+import HomeFooter from "../components/layout/HomeFooter.vue";
 
 export default {
   components: {
