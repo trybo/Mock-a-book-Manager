@@ -1,4 +1,5 @@
-# bai_app
+#Mock-a-book (Manager)
+IT project developed in the client-server architecture for the subject "Bogate Aplikacje Internetowe" at Cracow University of Economics, student of Applied Informatics.
 
 ## Project setup
 ```
