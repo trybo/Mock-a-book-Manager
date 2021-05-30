@@ -1,4 +1,4 @@
-#Mock-a-book (Manager)
+# Mock-a-book (Manager)
 IT project developed in the client-server architecture for the subject "Bogate Aplikacje Internetowe" at Cracow University of Economics, student of Applied Informatics.
 
 ## Technologies
@@ -11,7 +11,7 @@ IT project developed in the client-server architecture for the subject "Bogate A
 	- two graphs showing data statistics using [Chart.js](https://www.chartjs.org/ "Chart.js").
 1. Responsive site with [Bootstrap](https://getbootstrap.com/ "Bootstrap").
 
-##Demo
+## Demo
 Here, you can see [ Mock-a-book (Manager)](https://trybo.github.io/BAI_project/#/ " Mock-a-book (Manager)") ready app.
 
 ## Project setup
